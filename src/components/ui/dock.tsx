@@ -4,7 +4,7 @@ import React, { PropsWithChildren, useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
@@ -19,7 +19,7 @@ const DEFAULT_MAGNIFICATION = 100;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "supports-backdrop-blur:bg-black/10 mx-auto mt-8 flex h-[60px] w-max gap-3 rounded-2xl border p-2 backdrop-blur-md"
+  "supports-backdrop-blur:bg-black/10 mx-auto mt-8 flex h-[60px] w-max gap-3 rounded-2xl border p-2 backdrop-blur-md",
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -32,7 +32,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
       direction = "bottom",
       ...props
     },
-    ref
+    ref,
   ) => {
     const mouseX = useMotionValue(Infinity);
 
@@ -65,7 +65,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
         {renderChildren()}
       </motion.div>
     );
-  }
+  },
 );
 
 Dock.displayName = "Dock";
@@ -102,7 +102,7 @@ const DockIcon = ({
   let widthSync = useTransform(
     distanceCalc,
     [-distance, 0, distance],
-    [40, magnification, 40]
+    [40, magnification, 40],
   );
 
   let width = useSpring(widthSync, {
@@ -117,11 +117,13 @@ const DockIcon = ({
       style={{ width }}
       className={cn(
         "flex aspect-square cursor-pointer items-center justify-center rounded-full",
-        className
+        className,
       )}
       {...props}
     >
-      <Link href={link} target="_blank">{children}</Link>
+      <Link href={link} target="_blank">
+        {children}
+      </Link>
     </motion.div>
   );
 };

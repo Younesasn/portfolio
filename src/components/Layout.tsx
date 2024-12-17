@@ -5,7 +5,7 @@ export default function Layout(props: {
   return (
     <section
       className={
-        `max-w-screen-lg mx-auto flex items-center py-4 px-8 h-[300px]` +
+        `mx-auto flex max-w-screen-lg items-center px-8 py-4` +
         (props.className ? ` ${props.className}` : "")
       }
     >
