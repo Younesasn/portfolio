@@ -1,52 +1,44 @@
-import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
-import { BellIcon, Share2Icon } from "lucide-react";
-
 import { BentoCard, BentoGrid } from "./ui/bento-grid";
 import Layout from "./Layout";
-import Image from "next/image";
 
 const features = [
   {
-    Icon: FileTextIcon,
-    name: "Hacka'Press",
+    name: "Quality Barber",
     description: "We automatically save your files as you type.",
-    href: "https://hackapress.you-dev.fr",
+    href: "https://quality-barber.vercel.app",
     cta: "Learn more",
-    className: "col-span-3 lg:col-span-1 text-black",
-    background: (
-      <Image
-        src="/assets/chaise.webp"
-        alt="Chaise"
-        className="h-full w-full object-cover"
-        width={400}
-        height={400}
-      />
-    ),
+    isWhite: false,
+    className:
+      "col-span-3 lg:col-span-1 bg-[url('/assets/quality.jpg')] bg-cover bg-center bg-no-repeat",
+    background: <></>,
   },
   {
-    Icon: BellIcon,
-    name: "Notifications",
+    name: "Power",
     description: "Get notified when something happens.",
-    href: "#",
+    href: "https://power.you-dev.fr",
+    isWhite: false,
     cta: "Learn more",
-    className: "col-span-3 lg:col-span-2",
+    className:
+      "col-span-3 lg:col-span-2 bg-[url('/assets/power.jpg')] bg-cover bg-center bg-no-repeat",
     background: <></>,
   },
   {
-    Icon: Share2Icon,
-    name: "Integrations",
+    name: "Hacka'Press",
     description: "Supports 100+ integrations and counting.",
-    href: "#",
+    href: "https://hackapress.you-dev.fr",
+    isWhite: true,
     cta: "Learn more",
-    className: "col-span-3 lg:col-span-2",
+    className:
+      "col-span-3 lg:col-span-2 bg-[url('/assets/hackapress.png')] bg-cover bg-center bg-no-repeat text-black",
     background: <></>,
   },
   {
-    Icon: CalendarIcon,
-    name: "Calendar",
+    name: "Weather App",
     description: "Use the calendar to filter your files by date.",
-    className: "col-span-3 lg:col-span-1",
-    href: "#",
+    className:
+      "col-span-3 lg:col-span-1 bg-[url('/assets/weather.png')] bg-cover bg-center bg-no-repeat text-black",
+    href: "https://github.com/Younesasn/weather-app",
+    isWhite: true,
     cta: "Learn more",
     background: <></>,
   },
@@ -54,7 +46,8 @@ const features = [
 
 export function Project() {
   return (
-    <Layout>
+    <Layout className="flex-col items-baseline">
+      <h2 className="mb-8 text-3xl font-medium">Projects</h2>
       <BentoGrid>
         {features.map((feature, idx) => (
           <BentoCard key={idx} {...feature} />
